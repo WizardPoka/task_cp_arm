@@ -5,6 +5,20 @@ import bcrypt
 
 db = SQLAlchemy()
 
+class Address(db.Model):
+    __tablename__ = 'addresses'
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    value = db.Column(db.String(1024), nullable=False)
+    guid = db.Column(db.String(255), nullable=False)
+    
+    create_datetime = db.Column(db.DateTime, default=datetime.utcnow)
+    modify_datetime = db.Column(db.DateTime, onupdate=datetime.utcnow)
+    deleted = db.Column(db.Integer, default=0)
+
+    user = db.relationship('User', backref='address', lazy=True)
+
 class User(db.Model):
     __tablename__ = 'users'
     
