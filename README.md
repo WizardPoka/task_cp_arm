@@ -13,9 +13,10 @@
    ```bash
    pip install -r requirements.txt
 
-2. Запустите сервер:
+2. Запустите Docker Desktop:
     ```bash
-    python run.py
+    в основании проекта введите docker-compose up --build
+
 
 3. В запросе /register регистрация пользователя
 
